@@ -51,7 +51,7 @@ class Salarie extends Model
     protected $afterDelete = [];
 
     // insertion dans la table "salarie_profils" (ajoute  un  profils au salarie)
-    public function addProfil($idProfil, $idSalarie)
+    public function addProfil($idProfil, $idSalarie , $accreditation)
     {
         if ($idProfil != null) {
             $db = \Config\Database::connect();
@@ -59,7 +59,8 @@ class Salarie extends Model
 
             $builder->insert([
                 'ID_PROFIL' => $idProfil,
-                'ID_SALARIE' => $idSalarie
+                'ID_SALARIE' => $idSalarie,
+                'ACCREDITATION' => $accreditation,
             ]);
 
             // var_dump($idProfil, $idSalarie);
@@ -80,6 +81,9 @@ class Salarie extends Model
             $builder->where('p.ID_PROFIL', $idProfil);
         }
 
+       // if ($accreditation !== null) {
+         //   $builder->where('a.ACCREDITATION', $accreditation);
+        //}
         return $builder->groupBy('s.ID_SALARIE, p.ID_PROFIL')
             ->get()
             ->getResultArray();

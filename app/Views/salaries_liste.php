@@ -24,25 +24,24 @@
                 </select>
             </form>
 
-                 <!-- Formulaire de filtre accreditation-->
+            <!-- Formulaire de filtre accreditation-->
             <form method="get" action="<?= url_to('salarie_liste') ?>"> <!-- Soumet au même contrôleur -->
-                <label for="profil">Filtrer par accreditation :</label>
+                <label for="accreditation">Filtrer par accreditation :</label>
                 <button type="submit">Filtrer</button>
                 <select name="accreditation" id="accreditation">
-                    <option value="">Tous</option>
-                    <?php foreach ($listeAccrediation as $accreditation): ?>
-                        <option value="<?= esc($accreditation['ACCREDITATION']) ?>" <?= ($accreditation['ACCREDITATION'] == $accreditationSelectionne) ? 'selected' : '' ?>>
-                            <?= esc($accreditation['ACCREDITATIO?']) ?>
-                        </option>
-                    <?php endforeach; ?>
+                    <option value="">-- Tous --</option>
+                    <option value="">secret defence</option>
+
                 </select>
-            </form>        
+            </form>
 
         </div>
         <!-- Affichage des salariés -->
         <div class="table-container">
             <?php
+
             use \CodeIgniter\View\Table;
+
             $table = new \CodeIgniter\View\Table();
             $table->setHeading('Prenom', 'Nom', 'Civilité', 'Email', 'Téléphone', 'Adresse', 'Code-Postal', 'Ville', 'Profils', 'Modifier', 'Supprimer');
 

@@ -52,6 +52,13 @@
                     <label for="profils[]"><?= $profil['LIBELLE'] ?></label><br>
                 <?php } ?>
 
+                <label for="ACCREDITATION">Accreditation :</label>
+                <select name="ACCREDITATION" id="ACCREDITATION" required>
+                    <option value="" disabled selected>tous</option>
+                    <option value="secret defense">secret defense</option>             
+                </select><br>
+             
+
                 <input type="submit" value="Valider">
             </fieldset>
         </form>
