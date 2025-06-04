@@ -21,6 +21,7 @@ class Salarie extends Model
         'ADRESSE_SALARIE',
         'CODE_POSTAL_SALARIE',
         'VILLE_SALARIE',
+        'ACCREDITATION',
     ];
 
     protected bool $allowEmptyInserts = false;

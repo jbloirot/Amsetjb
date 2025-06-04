@@ -23,6 +23,21 @@
                     <?php endforeach; ?>
                 </select>
             </form>
+
+                 <!-- Formulaire de filtre accreditation-->
+            <form method="get" action="<?= url_to('salarie_liste') ?>"> <!-- Soumet au même contrôleur -->
+                <label for="profil">Filtrer par accreditation :</label>
+                <button type="submit">Filtrer</button>
+                <select name="accreditation" id="accreditation">
+                    <option value="">Tous</option>
+                    <?php foreach ($listeAccrediation as $accreditation): ?>
+                        <option value="<?= esc($accreditation['ACCREDITATION']) ?>" <?= ($accreditation['ACCREDITATION'] == $accreditationSelectionne) ? 'selected' : '' ?>>
+                            <?= esc($accreditation['ACCREDITATIO?']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </form>        
+
         </div>
         <!-- Affichage des salariés -->
         <div class="table-container">
@@ -42,6 +57,7 @@
                     esc($salarie['CODE_POSTAL_SALARIE']),
                     esc($salarie['VILLE_SALARIE']),
                     esc($salarie['profil']), // Profils concaténés
+                    esc($salarie['ACCREDITATION']),
                     '<a href="' . url_to('salarie_modif', $salarie['ID_SALARIE']) . '"><button>Modifier</button></a>',
 
                     '<form method="post" action="' . url_to('salarie_delete', $salarie['ID_SALARIE']) . '">
